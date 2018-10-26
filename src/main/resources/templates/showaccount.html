@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+</head>
+<body>
+<a href="/">Show All Transactions</a><br />
+
+Account Number:&nbsp;<span th:text="${account.AccountNumber}"></span><br />
+
+Account Balance:&nbsp;<span th:text="${account.balance}"></span><br />
+
+
+<!--
+<a th:href="@{/delete/{id}(id=${course.id})}">Delete This Course</a>
+-->
+
+</body>
+</html>

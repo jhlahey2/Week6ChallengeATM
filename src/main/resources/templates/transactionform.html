@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Deposit</title>
+</head>
+<body>
+<!-- repository = transactions, Transaction fields = id, accountNumber, action, amount, reason -->
+<form action="#"
+      th:action="@{/process}"
+      th:object="${transaction}"
+      method="post">
+    <input type ="hidden" th:field="*{id}" />
+
+    Account:<input type ="text" th:field="*{accountNumber}" />
+    <span th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}"></span><br />
+
+    <!--action can only be deposit or withdrawal -->
+    Action:<input type="text" th:field="*{action}" />
+    <span th:if="${#fields.hasErrors('action')}" th:errors="*{action}"></span><br />
+
+    Amount:<input type="text" th:field="*{amount}" />
+    <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span><br />
+
+    Reason:<textarea rows="3" th:field="*{reason}" />
+    <span th:if="${#fields.hasErrors('reason')}" th:errors="*{reason}"></span><br />
+
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+
+</body>
+</html>

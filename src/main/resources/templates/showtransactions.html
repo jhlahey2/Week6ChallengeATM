@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Transaction History</title>
+</head>
+<body>
+
+<a href="/add">Enter Transaction</a><br />
+<!--
+<a href="/deposit">Make a Deposit</a><br />
+<a href="/withdrawal">Make a Withdrawal</a><br />
+-->
+<br />
+<table>
+    <tr>
+        <th>Account</th>
+        <th>Action</th>
+        <th>Amount</th>
+        <th>Reason</th>
+        <th>View Account</th>
+    </tr>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.accountNumber}"></td>
+        <td th:text="${transaction.action}"></td>
+        <td th:text="${transaction.amount}"></td>
+        <td th:text="${transaction.reason}"></td>
+        <td>
+            <a th:href="@{/detail/{acct}(acct=${transaction.accountNumber})}">Account</a>
+        </td>
+
+    </tr>
+</table>
+
+<!-- repository = transactions, Transaction fields = id, accountNumber, action, amouunt, reason -->
+
+<!-- BEGINNING OF COMMENT
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Instructor</th>
+        <th>Credits</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="course : ${courses}">
+        <td th:text="${course.title}"></td>
+        <td th:text="${course.instructor}"></td>
+        <td th:text="${course.credit}"></td>
+        <td>
+            <a th:href="@{/update/{id}(id=${course.id})}">Update</a>
+            <a th:href="@{/detail/{id}(id=${course.id})}">Details</a>
+            <a th:href="@{/delete/{id}(id=${course.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+END OF COMMENT -->
+</body>
+</html>

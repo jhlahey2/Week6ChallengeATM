@@ -1,0 +1,34 @@
+
+Week 6 Challenge: First Spring Application (ATM)
+
+Due Friday by 5:01pm Points 100 Submitting a website url Available after Oct 25 at 8:30am
+
+Write an Spring Boot application simulating a ATM at a bank.
+
+The application should allow people to make a deposit or a withdrawal with a form and show their transaction history,
+
+along with their balance.
+
+So, you will need the following pages:
+
+    deposit form
+    withdrawal form
+    transaction history page
+
+For your model, you will need
+
+Transaction
+
+    id #(autoincrement)
+    accountNumber #
+    action (withdrawal or deposit)
+    amount
+    reason
+
+The users will not login, they will just enter in their accountNumber number (we are very trusting here at SpringBoot Bank.
+
+--------------------
+
+Optional, but recommended: If you finish this early then please stay a while and continue working on the other
+assignments in the SpringBoot packets which you may have missed up to and including all of Lesson 3 (Database Relationships).
+
