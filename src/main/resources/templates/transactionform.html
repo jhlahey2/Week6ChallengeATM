@@ -5,25 +5,27 @@
     <title>Deposit</title>
 </head>
 <body>
-<!-- repository = transactions, Transaction fields = id, accountNumber, action, amount, reason -->
 <form action="#"
       th:action="@{/process}"
       th:object="${transaction}"
       method="post">
     <input type ="hidden" th:field="*{id}" />
 
-    Account:<input type ="text" th:field="*{accountNumber}" />
-    <span th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}"></span><br />
+    Account:&nbsp;<input type ="text" th:field="*{accountNumber}" />
+    <span th:if="${#fields.hasErrors('accountNumber')}" th:errors="*{accountNumber}"></span><br /><br />
 
-    <!--action can only be deposit or withdrawal -->
-    Action:<input type="text" th:field="*{action}" />
-    <span th:if="${#fields.hasErrors('action')}" th:errors="*{action}"></span><br />
+    Select Transaction Type:&nbsp;
+    <select th:field="*{action}">
+        <option th:value="deposit" th:text="Deposit"></option>
+        <option th:value="withdrawal" th:text="Withdrawal"></option>
+    </select>
+    <br /><br />
 
-    Amount:<input type="text" th:field="*{amount}" />
-    <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span><br />
+    Amount:&nbsp;<input type="text" th:field="*{amount}" />
+    <span th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span><br /><br />
 
-    Reason:<textarea rows="3" th:field="*{reason}" />
-    <span th:if="${#fields.hasErrors('reason')}" th:errors="*{reason}"></span><br />
+    Reason:&nbsp;<textarea rows="3" th:field="*{reason}" />
+    <span th:if="${#fields.hasErrors('reason')}" th:errors="*{reason}"></span><br /><br />
 
     <br />
     <input type="submit" value="Submit" />

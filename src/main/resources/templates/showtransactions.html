@@ -7,18 +7,16 @@
 <body>
 
 <a href="/add">Enter Transaction</a><br />
-<!--
-<a href="/deposit">Make a Deposit</a><br />
-<a href="/withdrawal">Make a Withdrawal</a><br />
--->
+
 <br />
 <table>
     <tr>
-        <th>Account</th>
-        <th>Action</th>
-        <th>Amount</th>
-        <th>Reason</th>
-        <th>View Account</th>
+        <th>Account<br />Number</th>
+        <th>Transaction<br />Type</th>
+        <th>Transaction<br />Amount</th>
+        <th>Transaction<br />Reason</th>
+        <th>Edit<br />Transaction</th>
+        <th>View<br />Account</th>
     </tr>
     <tr th:each="transaction : ${transactions}">
         <td th:text="${transaction.accountNumber}"></td>
@@ -26,33 +24,14 @@
         <td th:text="${transaction.amount}"></td>
         <td th:text="${transaction.reason}"></td>
         <td>
+<!--       <a th:href="@{/update/{id}(id=${transaction.id})}">Update</a> -->
+            <a th:href="@{/delete/{id}(id=${transaction.id})}">Delete</a>
+        </td>
+        <td>
             <a th:href="@{/detail/{acct}(acct=${transaction.accountNumber})}">Account</a>
         </td>
 
     </tr>
 </table>
-
-<!-- repository = transactions, Transaction fields = id, accountNumber, action, amouunt, reason -->
-
-<!-- BEGINNING OF COMMENT
-<table>
-    <tr>
-        <th>Title</th>
-        <th>Instructor</th>
-        <th>Credits</th>
-        <th>Actions</th>
-    </tr>
-    <tr th:each="course : ${courses}">
-        <td th:text="${course.title}"></td>
-        <td th:text="${course.instructor}"></td>
-        <td th:text="${course.credit}"></td>
-        <td>
-            <a th:href="@{/update/{id}(id=${course.id})}">Update</a>
-            <a th:href="@{/detail/{id}(id=${course.id})}">Details</a>
-            <a th:href="@{/delete/{id}(id=${course.id})}">Delete</a>
-        </td>
-    </tr>
-</table>
-END OF COMMENT -->
 </body>
 </html>

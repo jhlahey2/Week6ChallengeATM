@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.HashSet;
 
 @Controller
 public class HomeController {
@@ -70,8 +69,6 @@ public class HomeController {
 
             System.out.println("Only type in \"deposit\" or \"withdrawal\" ");
         }
-
-
         //save the transaction to the repository
         transactionRepository.save(transaction);
         return "redirect:/";
@@ -86,10 +83,38 @@ public class HomeController {
 
         model.addAttribute("account", tempAccount);
 
-//        model.addAttribute("course", courseRepository.findById(id).get());
-
         return "showaccount";
     }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteTransaction(@PathVariable("id") long id) {
+
+        //get the transaction
+        Transaction tempTransaction = transactionRepository.findById(id).get();
+        //get the account
+        Account tempAccount = accountMap.get(tempTransaction.getAccountNumber());
+
+        if (tempTransaction.getAction().equalsIgnoreCase("deposit")) {
+
+            //if the transaction was a deposit, subtract the amount from account balance
+            tempAccount.setBalance(tempAccount.getBalance() - tempTransaction.getAmount());
+
+        } else {
+
+            //if the transaction was a withdrawal, add the amount to account balance
+            tempAccount.setBalance(tempAccount.getBalance() + tempTransaction.getAmount());
+        }
+
+        transactionRepository.deleteById(id);;
+        return "redirect:/";
+    }
+
+//    @RequestMapping("/update/{id}")
+//    public String updateTransaction(@PathVariable("id") long id, Model model){
+//
+//        model.addAttribute("transaction", transactionRepository.findById(id));
+//        return "transactionform";
+//    }
 
 
 }//end public class HomeController

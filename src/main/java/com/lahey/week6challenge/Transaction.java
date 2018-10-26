@@ -16,7 +16,7 @@ public class Transaction {
     private long id;
 
     @NotNull
-    @Min(3)
+    @Min(1)
     private int accountNumber;
 
     @NotNull
@@ -24,6 +24,7 @@ public class Transaction {
     private String action;
 
     @NotNull
+    @Min(1)
     private double amount;
 
     @NotNull
@@ -82,12 +83,4 @@ public class Transaction {
         this.balance = balance;
     }
 
-
-
-/*
-// repository = transactions
-// transaction fields = id, accountNumber, action, amount, reason
-
-<!-- repository = transactions, Transaction fields = id, accountNumber, action, amouunt, reason -->
-*/
-}
+}//end public class Transaction
